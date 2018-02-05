@@ -46,15 +46,15 @@ public class Physick {
         dynamicBodyList.forEach(player -> player.update(dt));
     }
 
-    public void addBody(IBodyBehaviur player) {
-        Body body = bodyManager.addBodyToWorld(player);
-         //TODO dokończyć
-
+    public void addBody(IBodyBehaviur bodyBehaviur) {
+        bodyManager.addBodyToWorld(bodyBehaviur);
+        dynamicBodyList.add(bodyBehaviur);
     }
 
     public void removeFromSimulator(IBodyBehaviur body) {
-
-
+        if(dynamicBodyList.contains(body)) {
+            dynamicBodyList.remove(body);
+        }
     }
 
     public World getWorld() {

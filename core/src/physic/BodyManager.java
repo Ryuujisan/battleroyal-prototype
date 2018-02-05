@@ -22,9 +22,9 @@ public class BodyManager {
 
 
     public Body addBodyToWorld(IBodyBehaviur model) {
-        BodyDef bodyDef = model.createBody();
+        Body body = model.createBody(world);
 
-        return world.createBody(bodyDef);
+        return body;
     }
 
     public void removeScheduledBodies() {
