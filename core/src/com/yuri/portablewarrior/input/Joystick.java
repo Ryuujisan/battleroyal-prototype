@@ -40,18 +40,27 @@ public class Joystick implements ApplicationListener {
 
     @Override
     public void create() {
+        spriteBatch = new SpriteBatch();
         skin = new Skin();
 
-        MyGdxGame.assetManager.load("data/touchBackground.png", Texture.class);
-        skin.add("touchBacgraund", MyGdxGame.assetManager.get("data/touchBackground.png"), Texture.class);
+        Texture texture = new Texture("data/touchBackground.png");
+
+        System.out.println(texture);
+
+        skin.add("touchBacgraund", new Texture("data/touchBackground.png"));
         skin.add("touchKnob", new Texture(Gdx.files.internal("data/touchKnob.png")));
+
 
         touchpadStyle  = new Touchpad.TouchpadStyle();
         touchBacgraund = skin.getDrawable("touchBacgraund");
         touchKnob      = skin.getDrawable("touchKnob");
 
+        touchpadStyle.background = touchBacgraund;
+        touchpadStyle.knob = touchKnob;
+
         touchpad       = new Touchpad(1, touchpadStyle);
-        touchpad.setSize(10f, 10f);
+        touchpad.setSize(5f, 5f);
+        touchpad.setBounds(15f ,11f,125f,125f);
 
         stage          = new Stage();
         stage.addActor(touchpad);
@@ -82,6 +91,12 @@ public class Joystick implements ApplicationListener {
     @Override
     public void dispose() {
 
+    }
+
+    public void renderTouchpad() {
+        stage.act(Gdx.graphics.getDeltaTime());
+        dir.set(touchpad.getKnobPercentX(), touchpad.getKnobPercentY());
+        stage.draw();
     }
 
     public Vector2 getPosition() {

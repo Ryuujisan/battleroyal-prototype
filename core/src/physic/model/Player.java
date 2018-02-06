@@ -1,7 +1,7 @@
 package physic.model;
 
 import com.badlogic.gdx.physics.box2d.*;
-import com.sun.istack.internal.NotNull;
+
 
 public abstract class Player implements IBodyBehaviur {
 
@@ -11,7 +11,7 @@ public abstract class Player implements IBodyBehaviur {
     protected Body body;
 
     @Override
-    public Body createBody(@NotNull World world) {
+    public Body createBody(World world) {
         //Create Body def
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
