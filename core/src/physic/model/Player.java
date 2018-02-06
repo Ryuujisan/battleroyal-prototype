@@ -23,10 +23,10 @@ public abstract class Player implements IBodyBehaviur {
         CircleShape shape = new CircleShape();
         shape.setRadius(0.75f);
 
-        FixtureDef fixtureDef = new FixtureDef();
-        fixtureDef.shape    = shape;
-        fixtureDef.density  = 0.3f; // gestosc
-        fixtureDef.friction = 0.4f; // tarcie
+        FixtureDef fixtureDef  = new FixtureDef();
+        fixtureDef.shape       = shape;
+        fixtureDef.density     = 0.3f; // gestosc
+        fixtureDef.friction    = 0.4f; // tarcie
         fixtureDef.restitution = 0.0f; // odbijanie;
 
         body.createFixture(fixtureDef);
@@ -44,6 +44,6 @@ public abstract class Player implements IBodyBehaviur {
 
     @Override
     public Body getBody() {
-        return null;
+        return body;
     }
 }

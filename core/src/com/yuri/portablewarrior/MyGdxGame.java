@@ -2,21 +2,27 @@ package com.yuri.portablewarrior;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.yuri.portablewarrior.input.Joystick;
 import physic.Physick;
 import physic.model.Warrior;
 
 public class MyGdxGame extends ApplicationAdapter {
 
+	public static AssetManager assetManager = new AssetManager();
+
 	private Physick physick;
 
 	private Box2DDebugRenderer debugRenderer;
 	private OrthographicCamera camera;
+
+	Joystick joystick = new Joystick(camera);
 
 	@Override
 	public void create () {

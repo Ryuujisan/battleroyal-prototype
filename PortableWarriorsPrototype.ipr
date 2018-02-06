@@ -50,10 +50,10 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module filepath="$PROJECT_DIR$/PortableWarriorsPrototype.iml" fileurl="file://$PROJECT_DIR$/PortableWarriorsPrototype.iml" />
-      <module filepath="$PROJECT_DIR$/core/core.iml" fileurl="file://$PROJECT_DIR$/core/core.iml" />
-      <module filepath="$PROJECT_DIR$/desktop/desktop.iml" fileurl="file://$PROJECT_DIR$/desktop/desktop.iml" />
-      <module filepath="$PROJECT_DIR$/html/html.iml" fileurl="file://$PROJECT_DIR$/html/html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PortableWarriorsPrototype.iml" filepath="$PROJECT_DIR$/PortableWarriorsPrototype.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/desktop/desktop.iml" filepath="$PROJECT_DIR$/desktop/desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/html/html.iml" filepath="$PROJECT_DIR$/html/html.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
