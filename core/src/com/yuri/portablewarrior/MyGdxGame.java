@@ -12,40 +12,54 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.yuri.portablewarrior.input.Joystick;
 import physic.Physick;
+import physic.Utils;
+import physic.model.Player;
 import physic.model.Warrior;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class MyGdxGame extends ApplicationAdapter {
+
 	SpriteBatch batch;
 	Texture img;
 
 	private Box2DDebugRenderer debugRenderer;
 	private OrthographicCamera camera;
 
-	Joystick joystick ;
+	Joystick 				   joystick ;
 
 
-	private Physick physick;
-
-
+	private Physick 		   physick;
+	private Player 			   player;
+	private List<Player> 	   players;
+	private int 			   count = 8;
 	@Override
 	public void create () {
+		batch 		  = new SpriteBatch();
+		img 		  = new Texture("data/touchBackground.png");
 
-		batch = new SpriteBatch();
-		img = new Texture("data/touchBackground.png");
+		physick 	  = new Physick();
 
-		physick = new Physick();
+		player 		  = new Warrior();
+		players 	  = new ArrayList<>();
 
-		Warrior warrior = new Warrior();
+		physick.addBody(player);
 
-		physick.addBody(warrior);
+
+		for(int i = 0; i < count; i++){
+
+		}
 
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 
-		camera = new OrthographicCamera(30, 30 * (h /w));
+		camera = new OrthographicCamera();
 		//debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
 		debugRenderer = new Box2DDebugRenderer();
-		//camera.setToOrtho(false);
-		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight /2f, 0);
+		camera.setToOrtho(true, 30 / Utils.PPM, 25 / Utils.PPM);
+		//camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight /2f, 0);
 		camera.update();
 		System.out.println(camera.position);
 
@@ -57,11 +71,16 @@ public class MyGdxGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+		addEnemy();
 
-		camera.update();
+		player.setDir(getInput());
+		physick.update();
+
 		debugRenderer.render(physick.getWorld(), camera.combined);
-		System.out.println(getInput());
+		updateCamera();
 		joystick.renderTouchpad();
+		//System.out.println(player.getBody().getPosition());
+		//System.out.println(camera.position);
 	}
 
 	@Override
@@ -70,5 +89,29 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	public Vector2 getInput() {
 		return joystick.getPosition();
+	}
+
+	public void updateCamera() {
+		Vector3 position = camera.position;
+		position.x 		 = player.getBody().getPosition().x;
+		position.y	 	 = player.getBody().getPosition().y;
+		camera.update();
+	}
+
+	public void addEnemy() {
+		if(players.size() <= count) {
+			Random random = new Random();
+			Warrior enemy = new Warrior();
+
+			physick.addBody(enemy);
+			players.add(enemy);
+
+			Vector2 newPos = player.getBody().getPosition();
+
+			newPos.x 	  += random.nextInt(100);
+			newPos.y 	  += random.nextInt(100);
+
+			enemy.setPosition(newPos);
+		}
 	}
 }

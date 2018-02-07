@@ -3,7 +3,9 @@ package physic;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.World;
+import physic.handle.ContackListener;
 import physic.model.IBodyBehaviur;
 
 import java.util.ArrayList;
@@ -11,17 +13,20 @@ import java.util.List;
 
 public class Physick {
 
-    private World world;
-    private BodyManager bodyManager;
+    private World               world;
+    private BodyManager         bodyManager;
+    private ContactListener     contactListener;
 
-    List<IBodyBehaviur> dynamicBodyList = new ArrayList<IBodyBehaviur>();
+    private List<IBodyBehaviur> dynamicBodyList         = new ArrayList<IBodyBehaviur>();
 
-    private long lastSimulationTimestamp = System.currentTimeMillis();
+    private long                lastSimulationTimestamp = System.currentTimeMillis();
     private float dt = 0.0f;
 
     public Physick() {
-        world = new World(new Vector2(0.0f, 0.0f), true);
-        bodyManager = new BodyManager(this);
+        world           = new World(new Vector2(0.0f, 0f), true);
+        bodyManager     = new BodyManager(this);
+        contactListener = new ContackListener();
+        world.setContactListener(contactListener);
     }
 
     public void update() {

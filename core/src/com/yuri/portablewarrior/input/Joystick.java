@@ -21,17 +21,17 @@ public class Joystick implements ApplicationListener {
 
     private Side side;
 
-    private Touchpad touchpad;
-    private Skin skin;
-    private Stage stage;
-    private OrthographicCamera camera;
-    private SpriteBatch spriteBatch;
+    private Touchpad               touchpad;
+    private Skin                   skin;
+    private Stage                  stage;
+    private OrthographicCamera     camera;
+    private SpriteBatch            spriteBatch;
     private Touchpad.TouchpadStyle touchpadStyle;
 
-    private Drawable touchBacgraund;
-    private Drawable touchKnob;
+    private Drawable               touchBacgraund;
+    private Drawable               touchKnob;
 
-    private Vector2 dir = new Vector2();
+    private Vector2                dir = new Vector2();
 
     public Joystick(OrthographicCamera camera) {
         this.camera = camera;
@@ -95,7 +95,7 @@ public class Joystick implements ApplicationListener {
 
     public void renderTouchpad() {
         stage.act(Gdx.graphics.getDeltaTime());
-        dir.set(touchpad.getKnobPercentX(), touchpad.getKnobPercentY());
+        dir.set(touchpad.getKnobPercentX(), -touchpad.getKnobPercentY());
         stage.draw();
     }
 
