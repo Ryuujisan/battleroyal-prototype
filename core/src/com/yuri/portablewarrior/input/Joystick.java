@@ -95,7 +95,7 @@ public class Joystick implements ApplicationListener {
 
     public void renderTouchpad() {
         stage.act(Gdx.graphics.getDeltaTime());
-        dir.set(touchpad.getKnobPercentX(), -touchpad.getKnobPercentY());
+        dir.set(touchpad.getKnobPercentX(), touchpad.getKnobPercentY());
         stage.draw();
     }
 

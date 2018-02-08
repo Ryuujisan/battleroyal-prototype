@@ -13,7 +13,7 @@ public abstract class Player implements IBodyBehaviur {
     protected float   speed       = 10f / Utils.PPM;
     protected float   angle       = 0f;
     protected float   attackRatio = 5f;
-    protected float   attackRange = 1f / Utils.PPM;
+    protected float   attackRange = 0.55f / Utils.PPM;
     protected float   maxHp       = 100f;
     protected float   currentHp;
 
@@ -48,8 +48,8 @@ public abstract class Player implements IBodyBehaviur {
         // Główne Ciało
         FixtureDef fixtureDef          = new FixtureDef();
         fixtureDef.shape               = shape;
-        fixtureDef.density             = 0.3f; // gestosc
-        fixtureDef.friction            = 0.4f; // tarcie
+        fixtureDef.density             = 0.0f; // gestosc
+        fixtureDef.friction            = 0.0f; // tarcie
         fixtureDef.restitution         = 0.0f; // odbijanie;
         fixtureDef.filter.categoryBits = bitType;
         fixtureDef.filter.maskBits     = mask;

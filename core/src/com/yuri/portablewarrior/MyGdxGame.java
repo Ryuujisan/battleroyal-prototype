@@ -7,10 +7,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.yuri.portablewarrior.input.Joystick;
+import com.yuri.portablewarrior.mapGenerator.MapGenerator;
 import physic.Physick;
 import physic.Utils;
 import physic.model.Player;
@@ -45,6 +47,8 @@ public class MyGdxGame extends ApplicationAdapter {
 		player 		  = new Warrior();
 		players 	  = new ArrayList<>();
 
+		///physick.mapBuilder(MapGenerator.initialiseMap(100, 100));
+
 		physick.addBody(player);
 
 
@@ -58,7 +62,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		camera = new OrthographicCamera();
 		//debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
 		debugRenderer = new Box2DDebugRenderer();
-		camera.setToOrtho(true, 30 / Utils.PPM, 25 / Utils.PPM);
+		camera.setToOrtho(false, 30 / Utils.PPM, 25 / Utils.PPM);
 		//camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight /2f, 0);
 		camera.update();
 		System.out.println(camera.position);
@@ -68,6 +72,10 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void render () {
+		if(!physick.mapReady) {
+			physick.mapBuilder(MapGenerator.initialiseMap(100, 100));
+		}
+
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -100,7 +108,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	public void addEnemy() {
 		if(players.size() <= count) {
-			Random random = new Random();
+			RandomXS128 random = new RandomXS128();
 			Warrior enemy = new Warrior();
 
 			physick.addBody(enemy);
