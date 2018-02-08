@@ -16,6 +16,7 @@ import com.yuri.portablewarrior.mapGenerator.MapGenerator;
 import physic.Physick;
 import physic.Utils;
 import physic.model.Player;
+import physic.model.Wall;
 import physic.model.Warrior;
 
 import java.util.ArrayList;
@@ -56,16 +57,19 @@ public class MyGdxGame extends ApplicationAdapter {
 
 		}
 
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
+		float w = Gdx.graphics.getWidth() ;
+		float h = Gdx.graphics.getHeight() ;
 
 		camera = new OrthographicCamera();
 		//debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
 		debugRenderer = new Box2DDebugRenderer();
-		camera.setToOrtho(false, 30 / Utils.PPM, 25 / Utils.PPM);
+		camera.setToOrtho(false, (w / 2) / Utils.PPM, (h / 2) / Utils.PPM);
 		//camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight /2f, 0);
 		camera.update();
 		System.out.println(camera.position);
+
+		//Wall wall = new Wall(0.2f,0.2f);
+		//physick.addBody(wall);
 
 		joystick = new Joystick(camera);
 	}
@@ -73,7 +77,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void render () {
 		if(!physick.mapReady) {
-			physick.mapBuilder(MapGenerator.initialiseMap(100, 100));
+			physick.mapBuilder(MapGenerator.generateMap(100, 100));
 		}
 
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -87,8 +91,6 @@ public class MyGdxGame extends ApplicationAdapter {
 		debugRenderer.render(physick.getWorld(), camera.combined);
 		updateCamera();
 		joystick.renderTouchpad();
-		//System.out.println(player.getBody().getPosition());
-		//System.out.println(camera.position);
 	}
 
 	@Override

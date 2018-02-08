@@ -25,7 +25,7 @@ public class Wall implements IBodyBehaviur {
     public Body createBody (World world) {
 
         BodyDef bodydef  = new BodyDef();
-        bodydef.type     = BodyDef.BodyType.KinematicBody;
+        bodydef.type     = BodyDef.BodyType.StaticBody;
 
         bodydef.position.set(position);
 
@@ -34,8 +34,9 @@ public class Wall implements IBodyBehaviur {
         PolygonShape shape      = new PolygonShape();
         FixtureDef   fixtureDef = new FixtureDef();
 
-        shape.setAsBox((float) ((double)Utils.WALL_SIZE  / (double)Utils.PPM), (float) ((double)Utils.WALL_SIZE / (double)Utils.PPM), new Vector2(0.0f, 0.0f), 0f);
-        fixtureDef.shape = shape;
+        shape.setAsBox((float) ((double)Utils.WALL_SIZE  / (double)Utils.PPM), (float) ((double)Utils.WALL_SIZE / (double)Utils.PPM));
+
+        fixtureDef.shape               = shape;
         fixtureDef.filter.maskBits     = maskBit;
         fixtureDef.filter.categoryBits = bitCategory;
 
