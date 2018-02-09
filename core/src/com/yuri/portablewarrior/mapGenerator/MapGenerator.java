@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class MapGenerator {
 
-    private static final int   BRITH_LIMIT     = 4;
-    private static final int   DEATH_LIMIT     = 1;
-    private static final int   NUMBER_OF_STEPS = 0;
+    private static final int   BRITH_LIMIT     = 3;
+    private static final int   DEATH_LIMIT     = 2;
+    private static final int   NUMBER_OF_STEPS = 2;
     private static final float INITIAL_CHANCE  = 0.4f;
 
     public static boolean[][] generateMap(int width, int hight) {
@@ -24,12 +24,11 @@ public class MapGenerator {
     public static boolean[][] initialiseMap(int width, int hight) {
         boolean[][] map               = new boolean[width][hight];
         float       chanceToStarAlive = 0.2f;
-        RandomXS128 random = new RandomXS128();
         for(int x = 0; x < width; x++) {
             for(int y = 0; y < hight; y++) {
-                float number = random.nextInt(100);
+                float number = (float) Math.random();
 
-                //System.out.println(number);
+                System.out.println(number);
 
                 if(number < chanceToStarAlive) {
                     map[x][y] = true;
