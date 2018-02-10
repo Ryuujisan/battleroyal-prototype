@@ -63,7 +63,7 @@ public class Physick {
         for(int x = 0; x < map.length; x++) {
             for(int y = 0; y < map[0].length; y++) {
                 if(map[x][y]) {
-                    Vector2 pos = new Vector2(((x * Utils.WALL_SIZE)   / Utils.PPM ) + ((Utils.WALL_SIZE ) / Utils.PPM), ((y * Utils.WALL_SIZE ) / Utils.PPM) + (Utils.WALL_SIZE ) / Utils.PPM)   ;
+                    Vector2 pos = new Vector2(((x * Utils.WALL_SIZE)   / Utils.PPM ) + (0), ((y * Utils.WALL_SIZE ) / Utils.PPM) + (0))   ;
                     Wall wall   = new Wall(pos);
                     wall.createBody(world);
                 }
