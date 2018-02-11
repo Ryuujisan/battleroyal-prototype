@@ -34,7 +34,7 @@ public class Wall implements IBodyBehaviur {
         PolygonShape shape      = new PolygonShape();
         FixtureDef   fixtureDef = new FixtureDef();
 
-        shape.setAsBox((float) ((double)Utils.WALL_SIZE  / (double)Utils.PPM), (float) ((double)Utils.WALL_SIZE / (double)Utils.PPM));
+        shape.setAsBox(Utils.WALL_SIZE  / Utils.PPM , Utils.WALL_SIZE / Utils.PPM);
 
         fixtureDef.shape               = shape;
         fixtureDef.filter.maskBits     = maskBit;

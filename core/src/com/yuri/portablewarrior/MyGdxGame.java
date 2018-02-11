@@ -34,7 +34,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	private Physick 		   physick;
 	private Player 			   player;
 	private List<BotAi> 	   bots;
-	private int 			   count 			       = 8;
+	private int 			   count 			       = 1;
 
 	private boolean[][]		   map;
 
@@ -59,8 +59,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
 		}
 
-		float w = Gdx.graphics.getWidth() / 5;
-		float h = Gdx.graphics.getHeight() / 5;
+		float w = Gdx.graphics.getWidth() ;
+		float h = Gdx.graphics.getHeight() ;
 
 		camera = new OrthographicCamera();
 		//debugRenderer = new Box2DDebugRenderer(true, true, true, true, true, true);
@@ -97,7 +97,7 @@ public class MyGdxGame extends ApplicationAdapter {
 			addEnemy();
 
 			player.setDir(getInput());
-			//bots.forEach(bot -> bot.botStearing());
+			bots.forEach(bot -> bot.botStearing());
 			physick.update();
 
 			debugRenderer.render(physick.getWorld(), camera.combined);
@@ -122,12 +122,11 @@ public class MyGdxGame extends ApplicationAdapter {
 	}
 
 	public void addEnemy() {
-		if(bots.size() <= count) {
-			if(lastTimeSpawnMilisecond - System.currentTimeMillis() >= lastTimeSpawnMilisecond) {
+		if(bots.size() < count) {
+			if(System.currentTimeMillis() - lastTimeSpawnMilisecond  >= timeSpawnMilisecond) {
 				Warrior enemy = new Warrior();
-				System.out.println("Wchodzi");
 				physick.addBody(enemy);
-				BotAi 	botAi = new BotAi(enemy);
+				BotAi 	botAi = new BotAi(enemy, map, this);
 				bots.add(botAi);
 
 				enemy.getBody().setTransform(MapGenerator.spawnPosition(map), 0);
@@ -135,4 +134,12 @@ public class MyGdxGame extends ApplicationAdapter {
 			}
 		}
 	}
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public List<BotAi> getBots() {
+        return bots;
+    }
 }

@@ -32,5 +32,10 @@
     <orderEntry type="library" exported="" name="Gradle: gdx-bullet-1.9.8" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gdx-ai-1.8.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gdx-controllers-1.9.8" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: annotations-15.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: core.core-1.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: core.core-1.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: core.core-1.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: core.core-1.0" level="project" />
   </component>
 </module>

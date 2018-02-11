@@ -42,6 +42,7 @@
     <orderEntry type="library" exported="" name="Gradle: gdx-controllers-gwt-1.9.8" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gdx-controllers-gwt-1.9.8-sources" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gdx-bullet-1.9.8" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: annotations-15.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gwt-user-2.8.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jsinterop-annotations-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jsinterop-annotations-1.0.1-sources" level="project" />

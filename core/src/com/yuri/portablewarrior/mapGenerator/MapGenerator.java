@@ -20,6 +20,22 @@ public class MapGenerator {
            map = doSimulationSteps(map);
         }
 
+        for(int x = 0; x < width; x++){
+            map[x][0] = true;
+        }
+
+        for(int x = 0; x < width; x++){
+            map[x][hight - 1] = true;
+        }
+
+        for(int y = 0; y < hight; y++){
+            map[0][y] = true;
+        }
+
+        for(int y = 0; y < hight; y++){
+            map[width - 1][y] = true;
+        }
+
         return map;
     }
 
@@ -94,8 +110,8 @@ public class MapGenerator {
 
         int     spawnLimit = random.nextInt(5);
 
-        for(int x = 20 ; x < map.length; x++) {
-            for(int y = 20; y < map[0].length; y++) {
+        for(int x = 10 ; x < map.length; x++) {
+            for(int y = 0; y < map[0].length; y++) {
                 if(!map[x][y]) {
                     int nbs = countAliveNeigbours(map, x,y);
                     if(nbs >= spawnLimit) {

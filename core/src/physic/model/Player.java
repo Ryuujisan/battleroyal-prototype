@@ -10,10 +10,10 @@ import physic.handle.CategoryBits;
 public abstract class Player implements IBodyBehaviur {
 
     //Player stats
-    protected float   speed       = 10f / Utils.PPM;
+    protected float   speed       = 100f / Utils.PPM;
     protected float   angle       = 0f;
     protected float   attackRatio = 5f;
-    protected float   attackRange = 0.55f / Utils.PPM;
+    protected float   attackRange = 10f / Utils.PPM;
     protected float   maxHp       = 100f;
     protected float   currentHp;
 
@@ -43,7 +43,7 @@ public abstract class Player implements IBodyBehaviur {
         body = world.createBody(bodyDef);
 
         CircleShape shape              = new CircleShape();
-        shape.setRadius(0.75f / Utils.PPM);
+        shape.setRadius(10f / Utils.PPM);
 
         // Główne Ciało
         FixtureDef fixtureDef          = new FixtureDef();
